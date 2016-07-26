@@ -1,6 +1,10 @@
 class WheelOfFortune
-  def initialize
-    p "Happy coding!"
+  attr_reader :theme, :guesses
+
+  def initialize (hash)
+    @phrase = hash[:phrase]
+    @theme = hash[:theme]
+    @guesses = []
   end
 
   def to_s
@@ -8,7 +12,11 @@ class WheelOfFortune
   end
 
   def can_i_have?(input)
-    nil
+    @phrase.each do |letter|
+      if (letter == input)
+        return true
+      end
+    end
   end
 
   def game_over?
