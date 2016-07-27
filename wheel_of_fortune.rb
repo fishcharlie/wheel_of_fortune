@@ -12,11 +12,15 @@ class WheelOfFortune
   end
 
   def can_i_have?(input)
-    @phrase.each do |letter|
-      if (letter == input)
+    formatinput = input.downcase
+    @guesses.push formatinput
+    phrase_array = @phrase.downcase.chars
+    phrase_array.each do |letter|
+      if (letter == formatinput)
         return true
       end
     end
+    return false
   end
 
   def game_over?
